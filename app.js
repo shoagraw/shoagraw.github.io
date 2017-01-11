@@ -58,3 +58,4 @@ AnetUX.controller("paymentController",['$scope',function($scope){
 
 
 }])
+isReady=true;
