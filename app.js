@@ -16,7 +16,7 @@ AnetUX.config(function($stateProvider,$urlRouterProvider) {
 		})
 		.state('acceptjsdemo', {
 			url:"/acceptjsdemo",
-			templateUrl : 'acceptjs.html',
+			templateUrl : 'Acceptjs.html',
 			
 			//controller  : 'aboutController'
 		})
