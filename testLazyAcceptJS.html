@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<title>Encrypt Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="jquery.md5.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
+  
+<!--<script  src="https://{[sfe[vip[2]]]}/v1/Accept.js"></script>
+ <script  src="../deploy/Accept.js"></script>-->
+ <style>
+body {
+     
+}
+
+.formDiv {
+    margin-top: 20px; 
+    padding-top: 20px;
+    border: 1px solid lightgrey;
+    border-radius:6px;
+}
+
+.formDiv1 {
+    margin-top: 20px; 
+    padding-top: 20px;
+    border: 1px solid white;
+    border-radius:6px;
+}
+#modal {
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 64px;
+    height: 64px;
+    padding:20px 5px 0px 0px;
+    border: 3px solid #ababab;
+    box-shadow:1px 1px 10px #ababab;
+    border-radius:20px;
+    background-color: white;
+    z-index: 1002;
+    text-align:center;
+    overflow: auto;
+}
+
+.outer{
+  text-align: center;
+  border-bottom: thin solid rgba(0, 0, 0, 0.07);
+}
+.outer img{
+  display: inline-block;
+  float:left;
+  padding-left: 20px;
+}
+
+.outerfooter{
+  float:right;
+  
+}
+
+.outerfooter img{
+  display: inline-block;
+}
+
+#fade {
+    display: none;
+    position:absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #ababab;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .70;
+    filter: alpha(opacity=80);
+}
+
+ 
+</style>
+  
+</head>
+<body>
+
+<div class="container">
+  <div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
+    <div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setDefaultValue()">
+       <img src="image/logo.png">
+    </div> 
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Card Number:</label>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <input type="text" class="form-control" id="cardNumber" placeholder="Card Number">
+      </div>
+    </div>
+    
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Expiry (MM/YY):</label>
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <input type="text" class="form-control " maxlength="7" id="MM" placeholder="Month">
+      </div> 
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <input type="text" maxlength="7" class="form-control" id="YY" placeholder="Year">
+      </div>
+    </div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="cardCode">(CVV &amp; Zip)</label>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<input type="text" class="form-control " maxlength="5"
+						id="cardCode" placeholder="CVV">
+				</div>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<input type="text" class="form-control" id="Zip" placeholder="Zip">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="cardHolderName">Card Holder Name:</label>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<input type="text" class="form-control" id="fullName"
+						placeholder="Name">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+     			 <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="loginID">Login ID:</label>
+      			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        			<input type="text" class="form-control" id="loginID" placeholder="Login ID">
+     			</div>
+   			 </div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">        
+      <div class="col-md-offset-3 col-sm-offset-3 col-lg-offset-3 col-md-6 col-lg-6 col-sm-6">
+        <button type="submit" id="pay" class="btn btn-primary btn-lg btn-block" onclick="encrypt(event)">Pay</button>
+      </div>
+    </div>
+   <div class="form-group" style="margin-right:0px;margin-left:0px;border-top: thin solid rgba(0, 0, 0, 0.07);">
+         <img src="image/powered_simple.png" style="float:right;margin-right: 15px;margin-top: 15px"/>
+    </div> 
+    </div>
+	
+	
+	<div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
+	<div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setClientKeyDefaultValue()">
+       <img src="image/logo.png">
+    </div>
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Need To Pass client Key</label>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <input type="checkbox" id="isClientKey"><br>
+      </div>
+    </div>
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="clientKey">Client Key:</label>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <input type="text" class="form-control" id="clientKey" placeholder="Client Key">
+      </div>
+    </div>
+    </div>
+    
+    
+	<div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
+    <div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setFingerPrintDefaultValue()">
+        <img src="image/logo.png">
+    </div> 
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Need To Pass Finger print</label>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <input type="checkbox" id="isFingerPrint"><br>
+      </div>
+    </div>
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="amount">Amount:</label>
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <input type="text" class="form-control " maxlength="7" id="amount" placeholder="Amount">
+      </div> 
+    </div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="Timer">Timer & SequenceID</label>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<input type="text" class="form-control " maxlength="10"
+						id="timer" placeholder="Timer">
+				</div>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<input type="text" class="form-control" id="sequence" placeholder="sequence">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="transactionKey">transaction Key:</label>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<input type="text" class="form-control" id="transactionKey"
+						placeholder="transactionKey">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="hash">Hash value:</label>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<input type="text" class="form-control" id="hashValue"
+						placeholder="hashValue">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">        
+      <div class="col-md-offset-3 col-sm-offset-3 col-lg-offset-3 col-md-6 col-lg-6 col-sm-6">
+        <button type="submit" id="GenerateFingerPrint" class="btn btn-primary btn-lg btn-block" onclick="GenerateHash(event)">Generate Hash</button>
+      </div>
+    </div>
+   <div class="form-group" style="margin-right:0px;margin-left:0px;border-top: thin solid rgba(0, 0, 0, 0.07);">
+         <img src="image/powered_simple.png" style="float:right;margin-right: 15px;margin-top: 15px"/>
+    </div> 
+    </div>
+	
+	
+    <div class="form-horizontal formDiv1" role="form" >
+     <div class="form-group">
+      <label class="control-label col-sm-3" for="blob">Encrypted Blob:</label>
+      <div class="col-sm-8">          
+        <textarea class="form-control" id="blob" rows="15"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="transact">Transact Response:</label>
+      <div class="col-sm-8">          
+         <textarea class="form-control" id="transact" rows="15"></textarea>
+      </div>
+    </div>
+  </div>
+  <div id="fade"></div>
+  <div id="modal">
+           
+        </div>
+</div>
+
+<script type="text/javascript">
+ 
+var fingerPrint;
+setTimeout(function(){ loadScript() }, 1000);
+
+function loadScript() {
+            var myScripts = document.createElement("script");
+            myScripts.type = "text/javascript";
+            myScripts.src = "https://{[sfe[vip[2]]]}/v1/Accept.js";
+            (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(myScripts);
+ 
+
+ 	/*	require(['Accept'], function(accept){
+             Accept =   accept;
+        });*/
+}
+
+ 
+function setDefaultValue(event){
+	document.getElementById('transact').value = '';
+	document.getElementById('blob').value = '';
+	document.getElementById('cardNumber').value ='4007000000027'; 
+	document.getElementById('MM').value = '12' ;
+	document.getElementById('YY').value = '34' ;
+	document.getElementById('cardCode').value = '3434' ;
+	document.getElementById('Zip').value = '98012' ;
+	document.getElementById('fullName').value = 'Ben Parker' ;
+	var ApiLoginID = document.getElementById('loginID').value= "new-vital-fnbo";
+}
+
+function setClientKeyDefaultValue(event){
+	document.getElementById('clientKey').value = '2nZ6CfUrYgQu6uXvf4PhJd4BSNZ5329X9YWHK8g3k6Qvc2VPgU6Ux3fk82x9tAxd' ;
+}
+
+
+
+function setFingerPrintDefaultValue(event){
+    var timer = Math.floor(Date.now() / 1000);
+	document.getElementById('transact').value = '';
+	document.getElementById('blob').value = '';
+	document.getElementById('loginID').value = '5gzmQ45X8';
+	document.getElementById('sequence').value = Math.round(Math.random()*timer); 
+	document.getElementById('timer').value = timer;
+	document.getElementById('amount').value = Math.round(Math.random()*100);
+	document.getElementById('transactionKey').value = '8w36Hh246Tr8UfLV';
+}
+  function callbackMerchant(response) {
+		if (response.messages.resultCode === 'Error') {
+			//closeModal();
+			populateErrorMessage(response);
+		} else {
+					document.getElementById('blob').value ='---'+response.opaqueData.dataDescriptor+ '\n'+'----'+response.opaqueData.dataValue;			
+					createTransact(response.opaqueData.dataValue);
+		}
+	}
+
+	function populateErrorMessage(response) {
+		var text = '';
+		for (var i = 0; i < response.messages.message.length; i++) {
+			text = text + response.messages.message[i].code + ':' + response.messages.message[i].text
+					+ '\n'
+		}
+		document.getElementById('blob').value = text;
+	};
+
+	function encrypt(event) {
+		document.getElementById('transact').value = '';
+		document.getElementById('blob').value = '';
+		//openModal();
+		testEncrypt();
+		event.preventDefault();
+	};
+
+	function GenerateHash(event){
+			var timer = document.getElementById('timer').value;
+			var SequenceID  = document.getElementById('sequence').value;
+			var amount = document.getElementById('amount').value;
+			var ApiLoginID = document.getElementById('loginID').value;
+			var buffer = ApiLoginID+'^'+SequenceID+'^'+timer+'^'+amount+'^';
+			var transKey = document.getElementById('transactionKey').value
+			document.getElementById('hashValue').value = $.md5(buffer, transKey).toString(); 
+
+	}
+
+	function openModal() {
+		document.getElementById('modal').style.display = 'block';
+		document.getElementById('fade').style.display = 'block';
+	}
+
+	function closeModal() {
+		document.getElementById('modal').style.display = 'none';
+		document.getElementById('fade').style.display = 'none';
+	}
+
+	function testEncrypt(cardDetails) {
+		var options = {} , authData = {} , cardData = {};
+		cardData.cardNumber = document.getElementById('cardNumber').value;
+		cardData.month = document.getElementById('MM').value;
+		cardData.year = document.getElementById('YY').value;
+		if ( document.getElementById('Zip').value != undefined)
+		{
+			cardData.zip = document.getElementById('Zip').value;
+		}
+		
+		if (document.getElementById('cardCode').value != undefined)
+		{
+			cardData.cardCode = document.getElementById('cardCode').value;
+		}
+		
+		if ( document.getElementById('fullName').value != undefined)
+		{
+			cardData.fullName = document.getElementById('fullName').value;
+		}
+		options.cardData = cardData;
+		if((document.getElementById('isFingerPrint').checked)) {
+	    	   authData.fingerprint = buildFingerPrint();
+	    }
+	    authData.apiLoginID = document.getElementById('loginID').value;
+	    if((document.getElementById('isClientKey').checked)){
+	    	 authData.clientKey = document.getElementById('clientKey').value;
+	    }
+        options.authData = authData ;
+         var response = Accept.dispatchData(options, 'callbackMerchant');
+       
+		
+	}
+
+	  function getCurrentTimeStamp() {
+	        return Math.floor(Date.now() / 1000);
+	    }
+	  
+	  function buildFingerPrint(){
+			var timer = document.getElementById('timer').value;
+			var SequenceID  = document.getElementById('sequence').value;
+			var amount = document.getElementById('amount').value;
+			var hash = document.getElementById('hashValue').value;
+			var fingerprint = {
+			    "hashValue": hash,
+			    "sequence": SequenceID,
+			    "timestamp": timer,
+			    "amount": amount
+			}
+	  		return  fingerprint;
+		}
+
+	function createTransact(data) {
+
+		
+        var xobj = null, endPoint = "__WCO_Domain__/xml/v1/request.api";
+        if (typeof XDomainRequest != "undefined"){
+              xobj = new XDomainRequest();
+         }
+        else{
+              xobj = new XMLHttpRequest();
+          }
+      
+        xobj.open('post', endPoint , true);
+        if (typeof XDomainRequest == "undefined"){
+        	xobj.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        }
+        xobj.onload  = function (){setTimeout(function(){ 
+          myTransacResponse(xobj), 2000});
+        };
+
+		var transacrequest = {
+			'createTransactionRequest' : {
+				'merchantAuthentication' : {
+					'name' : document.getElementById('loginID').value,
+					'transactionKey' : document.getElementById('transactionKey').value
+				},
+				'transactionRequest' : {
+					'transactionType' : 'authCaptureTransaction',
+					'amount' : document.getElementById('amount').value,
+					'currencyCode' : 'USD',
+					'payment' : {
+						'opaqueData' : {
+							'dataDescriptor' : 'COMMON.ACCEPT.INAPP.PAYMENT',
+							'dataValue' : data
+						}
+					},
+					'retail' : {
+						'marketType' : '0',
+						'deviceType' : '0'
+					}
+				}
+			}
+		}
+
+     xobj.send(JSON.stringify(transacrequest));
+
+	}
+		
+function myTransacResponse(xobj){
+              var responseText = JSON.parse(xobj.responseText);
+					if (responseText.messages.resultCode === 'Ok') {
+                                                document.getElementById('transact').value = JSON.stringify(responseText.transactionResponse , null , 15)
+						//response.encryptedBlob=responseText.encryptedValue;	
+						//window[callback](response);
+					} else {
+						//console.log('ErrorCode---'+responseText.messages.message[0].code+' Error Message---'+responseText.messages.message[0].text);
+						document.getElementById('transact').value = JSON.stringify(responseText.transactionResponse , null , 15)
+					}
+}
+
+	
+</script>
+</body>
+</html>

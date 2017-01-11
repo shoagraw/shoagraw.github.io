@@ -1,0 +1,99 @@
+<!DOCTYPE html >
+<html ng-app="UX_Components">
+    <head>
+        <link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+     
+         <script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular-animate.js"></script>
+        
+          <script src="assets/lib/angular-ui-router_0.2.10.js"></script>
+         <script src="assets/lib/mask.js"></script>
+
+        <script src="app.js"></script>
+    </head>
+
+    <body >
+        
+      <!--   <header class="utility-bar">
+            <div class="wrap">
+                <div class="row">
+                    <div id="logo" class="logo col-md-3">
+                        <a href="developer-home-page.html" tabindex="1"><img src="//js.authorize.net/v1/dist/imgs/logo-developer-authorizenet.png" alt="Developer.Authorize.Net"></a>
+                    </div>
+                </div>
+            </div>
+        </header> -->
+        <div class="componentContainer" style="height: 90%;display: -webkit-box;">
+            <div ui-view></div>
+        </div>
+       
+
+        <footer class="" style="margin-top: 100px">
+            <div class="container wrap footer-wrapper">
+                 <div class="row">
+                    <div class="col-md-3 footer-col">
+                        <h3>ABOUT US</h3>
+                        <ul>
+                            <li><a href="http://www.authorize.net/">Authorize.Net</a></li>
+                            <li><a href="http://www.authorize.net/blog/">Corporate
+                                    Blog</a></li>
+                            <li><a href="https://twitter.com/authorizenetdev">Twitter</a></li>
+                            <li><a href="http://developer.authorize.net/partners/developer/jobs/">Authorize.Net
+                                    Jobs on Elance</a></li>
+                            <li><a href="http://www.authorize.net/support/">Contact
+                                    Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-col">
+                        <h3>HOW PAYMENTS WORK</h3>
+                        <ul>
+                            <li><a href="http://www.authorize.net/videos/">Video
+                                    Tutorials</a></li>
+                            <li><a href="http://www.authorize.net/resources/howitworksdiagram/">Understanding
+                                    Credit<br>Card Processing
+                            </a></li>
+                            <li><a href="http://www.authorize.net/resources/glossary/">Glossary</a></li>
+                            <li><a href="http://www.authorize.net/resources/pcicompliance/">PCI
+                                    Compliance</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-col">
+                        <h3>FIND A PARTNER</h3>
+                        <ul>
+                            <li><a href="http://www.authorize.net/partners/affiliate">Affiliate
+                                    Program</a></li>
+                            <li><a href="http://www.authorize.net/solutions/partners/">Certification
+                                    Program</a></li>
+                            <li><a href="http://www.authorize.net/solutions/merchantsolutions/merchantservices/certifiedsolutiondirectory/">Certified
+                                    3rd Party<br>Products and Services
+                            </a></li>
+                            <li><a href="http://www.cybersource.com/">CyberSource.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-col last">
+                        <ul>
+                            <li class="bbb-logo"><img src="//js.authorize.net/v1/dist/imgs/bbb-logo.png" alt="BBB Accredited Business"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="row dev-footer-bottom">
+                    <div class="col-md-9 right">
+                        <a href="http://www.authorize.net"><img src="//js.authorize.net/v1/dist/imgs/logo-authorizenet.png" alt="Authorize.Net Logo"></a>
+                    </div>
+                    <div class="col-md-9 align-right right">
+                        <!-- <a href="#">Site Map</a><a href="#">Privacy</a><a href="#">Terms of Use</a> -->
+                        <p class="copyright text-uppercase">@ 2015. Authorize.Net is a registered trademark of CyberSource, a Visa company. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>

@@ -1,0 +1,153 @@
+/* line 1, ../scss/paymentForm.scss */
+.inlineInputImage {
+  margin-left: 3px;
+  margin-right: 0;
+  position: relative;
+  top: -30px;
+}
+
+/* line 7, ../scss/paymentForm.scss */
+.poweredBy {
+  background-image: url("../assets/images/powered_simple.png");
+  float: right;
+}
+
+/* line 11, ../scss/paymentForm.scss */
+.paddingleft30 {
+  padding-left: 50px !important;
+}
+
+/* line 22, ../scss/paymentForm.scss */
+h1 {
+  font-size: 3em;
+}
+
+/* line 25, ../scss/paymentForm.scss */
+a {
+  color: inherit;
+}
+
+/* line 28, ../scss/paymentForm.scss */
+form {
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: -50px;
+}
+
+/* line 36, ../scss/paymentForm.scss */
+input, .floating-placeholder {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20pt;
+  line-height: 2.6em;
+  height: 2.3em;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 45, ../scss/paymentForm.scss */
+.floating-placeholder input:focus + label {
+  color: #16abf0;
+}
+
+/* line 48, ../scss/paymentForm.scss */
+.floating-placeholder input[value] + label {
+  color: red;
+}
+
+/* line 51, ../scss/paymentForm.scss */
+.floating-placeholder {
+  position: relative;
+}
+
+/* line 55, ../scss/paymentForm.scss */
+.floating-placeholder input {
+  font-size: 20pt;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background: transparent;
+  z-index: 2;
+  border-bottom: 1px solid #cccccc;
+  text-indent: 20px;
+}
+
+/* line 70, ../scss/paymentForm.scss */
+.floating-placeholder label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-size: 20pt;
+  z-index: 1;
+  -webkit-transform-origin: 0 0em;
+  -moz-transform-origin: 0 0em;
+  -ms-transform-origin: 0 0em;
+  -o-transform-origin: 0 0em;
+  transform-origin: 0 0em;
+  -webkit-transition: -webkit-transform 160ms, color 200ms;
+  -moz-transition: -moz-transform 160ms, color 200ms;
+  -o-transition: -o-transform 160ms, color 200ms;
+  transition: transform 160ms, color 200ms;
+  -webkit-transform: scale(1, 1) rotateY(0);
+  -moz-transform: scale(1, 1) rotateY(0);
+  -ms-transform: scale(1, 1) rotateY(0);
+  -o-transform: scale(1, 1) rotateY(0);
+  transform: scale(1, 1) rotateY(0);
+  color: #999999;
+}
+
+/* line 82, ../scss/paymentForm.scss */
+.floating-placeholder-float label {
+  -webkit-transform: scale(0.55, 0.55) rotateY(0);
+  -moz-transform: scale(0.55, 0.55) rotateY(0);
+  -ms-transform: scale(0.55, 0.55) rotateY(0);
+  -o-transform: scale(0.55, 0.55) rotateY(0);
+  transform: scale(0.55, 0.55) rotateY(0);
+}
+
+/* line 85, ../scss/paymentForm.scss */
+.floating-placeholder-float input {
+  line-height: 3.4em;
+}
+
+/* line 88, ../scss/paymentForm.scss */
+.mainmodaldiv {
+  background: url(../../assets/images/powered_simple2.png);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-color: white;
+  padding-top: 60px;
+}
+
+/* line 95, ../scss/paymentForm.scss */
+.btn-custom {
+  color: #fff !important;
+  background-color: #4b9cd3 !important;
+  border-color: #3785b6 !important;
+  height: 3.8em;
+  margin-top: 10px;
+  margin-bottom: 20px !important;
+}
+
+/* line 103, ../scss/paymentForm.scss */
+.secureLock {
+  display: inline;
+  position: relative;
+  float: left;
+  top: -10px;
+  width: 20px;
+  left: -10px;
+}
+
+/* line 111, ../scss/paymentForm.scss */
+.brandLogo {
+  display: inline;
+  position: relative;
+  margin-left: -30px;
+}

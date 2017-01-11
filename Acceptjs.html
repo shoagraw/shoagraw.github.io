@@ -1,0 +1,122 @@
+<html lang="en"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=10">
+<title>Accept.JS Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://jstest.authorize.net/v1/Accept.js" charset="utf-8"></script><script type="text/javascript" src="https://jstest.authorize.net/v1/AcceptCore.js"></script>
+<script type="text/javascript" src="chrome-extension://aadgmnobpdmgmigaicncghmmoeflnamj/ng-inspector.js"></script></head>
+<body>
+<div class="container panel panel-default" style="margin-top:20px">
+<div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
+<div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setDefaultValue()">
+</div>
+<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Card Number:</label>
+<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+<input type="text" class="form-control" id="CARDNUMBER_ID" placeholder="Card Number" maxlength="20" value="378282246310005">
+</div>
+</div>
+<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Expiry (MM/YY):</label>
+<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+<input type="text" class="form-control " value="12" maxlength="2" id="EXPIRY_MONTH_ID" placeholder="Month">
+</div>
+<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+<input type="text" maxlength="4" value="20"  class="form-control" id="EXPIRY_YEAR_ID" placeholder="Year">
+</div>
+</div>
+<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">CVV/ZIP</label>
+<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+<input type="text" class="form-control" maxlength="3" id="CARD_CODE" placeholder="CVV" value="234">
+</div>
+<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+<input type="text" maxlength="5"  class="form-control" id="ZIP_CODE" placeholder="ZIP" value="98004">
+</div>
+</div>
+<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+<div class="col-md-offset-3 col-sm-offset-3 col-lg-offset-3 col-md-8 col-lg-8 col-sm-8">
+<button type="submit" id="pay" class="btn btn-primary btn-lg btn-block" onclick="getSecureData()">Get Payment Nonce</button>
+</div>
+</div>
+<div class="form-horizontal formDiv1" role="form">
+<div class="form-group">
+<label class="control-label col-sm-3" for="blob">Payment Nonce:</label>
+<div class="col-sm-8">
+<textarea class="form-control" id="blob" rows="6"></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container panel panel-default" style="margin-top:20px">
+<div>
+<h2 class="section-title text-dev-orange">
+Using The Payment Nonce On Your Server
+</h2>
+</div>
+<div>
+<ul class="itemizedList">
+<li>Simply replace the credit card element of a createTransaction call with the opaqueData element where the dataValue contains the Encrypted Blob above. <a href="http://developer.authorize.net/api/reference/#payment-transactions-charge-a-credit-card"> See CreateTransaction call in our API Reference.</a> For example: <para>
+<pre class="prettyprint lang-css linenums" id="successcode">&lt;createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd"&gt;
+&lt;merchantAuthentication&gt;
+&lt;name&gt;yours&lt;/name&gt;
+&lt;transactionKey&gt;yours&lt;/transactionKey&gt;
+&lt;/merchantAuthentication&gt;
+&lt;transactionRequest&gt;
+&lt;transactionType&gt;authCaptureTransaction&lt;/transactionType&gt;
+&lt;amount&gt;75.00&lt;/amount&gt;
+&lt;payment&gt;
+&lt;opaqueData&gt;
+&lt;dataDescriptor&gt;COMMON.ACCEPT.INAPP.PAYMENT&lt;/dataDescriptor&gt;
+&lt;dataValue&gt;nonce_here&lt;/dataValue &gt;
+&lt;/opaqueData&gt;
+&lt;/payment&gt;
+&lt;/transactionRequest&gt;
+&lt;/createTransactionRequest&gt;
+</pre></para>
+</li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">
+var blob = "";
+function getSecureData() {
+var secureData = {},
+authData = {},
+cardData = {};
+cardData.cardNumber = document.getElementById('CARDNUMBER_ID').value;
+cardData.month = document.getElementById('EXPIRY_MONTH_ID').value;
+cardData.year = document.getElementById('EXPIRY_YEAR_ID').value;
+cardData.zip  = document.getElementById('ZIP_CODE').value;
+cardData.cardCode  = document.getElementById('CARD_CODE').value;
+   
+secureData.cardData = cardData;
+authData.clientKey = '5FcB6WrfHGS76gHW3v7btBCE3HuuBuke9Pj96Ztfn5R32G5ep42vne7MCWZtAucY';
+authData.apiLoginID = '5KP3u95bQpv';
+secureData.authData = authData;
+Accept.dispatchData(secureData, 'responseHandler');
+}
+function responseHandler(response) {
+if (response.messages.resultCode === 'Error') {
+for (var i = 0; i < response.messages.message.length; i++) {
+console.log(response.messages.message[i].code + ':' + response.messages.message[i].text);
+$("#blob").val(response.messages.message[i].code + ':' + response.messages.message[i].text);
+}
+} else {
+   useOpaqueData(response.opaqueData)
+}
+}
+
+function useOpaqueData(responseData) {
+console.log(responseData.dataDescriptor);
+console.log(responseData.dataValue);
+$("#blob").val(responseData.dataValue);
+}
+
+</script>
+
+
+</body></html>

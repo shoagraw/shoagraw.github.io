@@ -1,0 +1,115 @@
+.inlineInputImage {
+	margin-left: 3px;
+	margin-right: 0;
+	position: relative;
+	top: -30px;
+}
+.poweredBy{
+	background-image: url("../assets/images/powered_simple.png");
+	float:right;
+}
+.paddingleft30{
+	padding-left:50px !important;
+}
+@import "compass/css3";
+
+$padding-horizontal:20px;
+$highlight-color:#16abf0;
+$inputBorder-bottom:1px solid #ccc;
+$floating-label-color:#999;
+
+
+h1{
+  font-size:3em;
+}
+a{
+  color:inherit;
+}
+form{
+ 
+  margin:0 auto;
+  background:white;
+  border-radius:10px;
+  margin-bottom:20px;
+  margin-top:-50px;
+}
+input, .floating-placeholder{
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:20pt;
+  line-height:2.6em;
+  height:2.3em;
+  margin:0;
+  padding:0;
+  width:100%;
+}
+.floating-placeholder input:focus+label{
+  color:$highlight-color;
+}
+.floating-placeholder input[value]+label{
+  color:red;
+}
+.floating-placeholder{
+  position:relative;
+}
+
+.floating-placeholder input{
+  font-size:20pt;
+  border:none;
+  outline:none;
+  position:absolute;
+  top:0;
+  left:0;
+  display:block;
+  background:transparent;
+  z-index:2;
+  border-bottom:$inputBorder-bottom;
+  text-indent:$padding-horizontal;
+}
+
+
+.floating-placeholder label{
+  display:block;
+  position:absolute;
+  top:0;
+  left:$padding-horizontal;
+  font-size:20pt;
+  z-index:1;
+  @include transform-origin(0,0.0em);
+  @include transition(transform 160ms, color 200ms);
+  @include transform(scale(1,1) rotateY(0));
+  color:$floating-label-color;
+}
+.floating-placeholder-float label{
+  @include transform(scale(0.55,0.55) rotateY(0));
+}
+.floating-placeholder-float input{
+  line-height:3.4em;
+}
+.mainmodaldiv {
+    background: url(../../assets/images/powered_simple2.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-color: white;
+    padding-top: 60px;
+}
+.btn-custom {
+    color: #fff !important;
+    background-color: #4b9cd3 !important;
+    border-color: #3785b6 !important;
+    height:3.8em;
+    margin-top:10px;
+    margin-bottom:20px !important;
+}
+.secureLock{
+    display: inline;
+    position: relative;
+    float: left;
+    top: -10px;
+    width:20px;
+    left:-10px;
+}
+.brandLogo{
+   display: inline;
+    position: relative;
+    margin-left:-30px;
+}

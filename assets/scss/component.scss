@@ -1,0 +1,81 @@
+
+//General Variables
+@import "_variables";
+@import "_ui-view";
+body{
+	margin:0px;
+	color: #000;
+    font-family: "ScalaSansWeb",Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.componentContainer{
+	.component{
+		margin-top:25px;
+	}
+}
+
+.container {
+
+    padding-left: 0px;
+    padding-right: 0px;
+}
+header {
+    background-color: $heading-bar;
+    box-shadow: 0 4px 0 rgba(50,50,50,0.4);
+    .logo{
+    	margin-left:15px;
+    }
+}
+footer {
+    padding-top: 67px;
+    padding-bottom: 78px;
+    background-color: #1a2f3e;
+    width: 100%;
+    min-width: 960px;
+    padding-left: 0px;
+    padding-right: 0px;
+    .footer-col .footer-wrapper {
+    	padding-left: 0px;
+	}
+	.footer-wrapper {
+	    padding: 0 25px;
+	}
+	.wrap {
+	    width: 1024px;
+	}
+	h3 {
+	    font-family: "ScalaSansWeb-Light",Arial,sans-serif;
+	    font-size: 20px;
+	    font-weight: normal;
+	    color: #fff;
+	    margin-bottom: 2px;
+	    font-weight: normal;
+	    font-size: 23px;
+	}
+	ul{ 
+	    margin-top: 24px;
+		li {
+		    color: #fff;
+		    margin-top: 9px;
+		    a {
+			    font-family: "ScalaSansWeb",Arial,sans-serif;
+			    font-size: 16px;
+			    font-weight: normal;
+			}
+			a:hover, a:focus {
+			    color: #2a6496;
+			    text-decoration: underline;
+			}
+			a:active, a:hover {
+			    outline: 0;
+			}
+		}
+	}
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+

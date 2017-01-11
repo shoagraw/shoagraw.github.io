@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Example Checkout Form</title>
+
+  <!-- The required library -->
+  <script type="text/javascript" src="https://jsbyz.labwebapp.com/v1/AuthorizeNet.js"></script>
+
+  <script type="text/javascript">
+    var responseHandler = function(response) {
+      // This will handle errors
+      
+      // take care of the success case, e.g. continue POST to your server, etc
+    };
+    function securePaymentData() {
+	// I'm guessing this fn would/could/should reach into the form
+	// to grab payment info
+	
+
+	
+	// then make the main JS call to get rid of the data
+	 AuthorizeNet.dispatchData(paymentInfo, 'responseHandler');
+	}
+  </script>
+</head>
+<body>
+  <h1>Donate $5</h1>
+  <form action="" method="POST" id="pmt-form">
+    <div class="form-row">
+      <label><span>Card Number</span><input type="text" size="20" id="cardNumber" /></label>
+    </div>
+    <div class="form-row">
+      <label><span>CVV</span><input type="text" size="4" id="cardCode" /></label>
+    </div>
+    <div class="form-row">
+      <label><span>Expiration Date (MM/YYYY)</span>
+      <input type="text" size="2" id="MM" /></label>
+      <span> / </span>
+      <input type="text" size="4" id="YY" />
+    </div>
+
+    <button type="submit" onclick="securePaymentData();">Pay</button>
+  </form>
+</body>
+</html>
