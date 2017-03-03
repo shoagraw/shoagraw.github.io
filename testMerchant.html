@@ -9,15 +9,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="jquery.md5.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
- <script  src="https://js.authorize.net/v1/Accept.js"></script>
-<!-- <script  src="../v1/Accept.js"></script> -->  <!-- // local -->
-<!-- <script  src="../v1/deploy/Accept.js"></script> -->
-<!-- <script src="https://jstest.authorize.net/v1/Accept.js" charset="utf-8"></script> -->
-
+  
+<script  src="https://js.authorize.net/v1/Accept.js"></script>
+<!-- <script  src="deploy/Accept.js"></script> -->
 <style>
 body {
-     background-image: assets/
+     
 }
 
 .formDiv {
@@ -91,9 +88,8 @@ body {
 
 <div class="container">
   <div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
-    <div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setDefaultValue()"><img style="width:20px;height:20px">
-
-      <!--  <img src="image/logo.png"> -->
+    <div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setDefaultValue()">
+       <img src="image/logo.png">
     </div> 
     <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
       <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Card Number:</label>
@@ -142,15 +138,15 @@ body {
       </div>
     </div>
    <div class="form-group" style="margin-right:0px;margin-left:0px;border-top: thin solid rgba(0, 0, 0, 0.07);">
-     <!--     <img src="image/powered_simple.png" style="float:right;margin-right: 15px;margin-top: 15px"/> -->
+         <img src="image/powered_simple.png" style="float:right;margin-right: 15px;margin-top: 15px"/>
     </div> 
     </div>
 	
 	
-	<!-- <div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
-	<div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setClientKeyDefaultValue()"><b>Fill Values<b>
-      <!--  <img src="image/logo.png"> -->
-  <!--   </div>
+	<div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
+	<div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setClientKeyDefaultValue()">
+       <img src="image/logo.png">
+    </div>
     <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
       <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Need To Pass client Key</label>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -163,20 +159,76 @@ body {
         <input type="text" class="form-control" id="clientKey" placeholder="Client Key">
       </div>
     </div>
-    </div> -->
+    </div>
     
     
-	
+	<div class="form-horizontal formDiv" role="form" style="padding-top: 0px;">
+    <div class="outer form-group" style="margin-right:0px;margin-left:0px;" onclick="setFingerPrintDefaultValue()">
+        <img src="image/logo.png">
+    </div> 
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="cardNumber">Need To Pass Finger print</label>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <input type="checkbox" id="isFingerPrint"><br>
+      </div>
+    </div>
+    <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+      <label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3" for="amount">Amount:</label>
+      <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        <input type="text" class="form-control " maxlength="7" id="amount" placeholder="Amount">
+      </div> 
+    </div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="Timer">Timer & SequenceID</label>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<input type="text" class="form-control " maxlength="10"
+						id="timer" placeholder="Timer">
+				</div>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<input type="text" class="form-control" id="sequence" placeholder="sequence">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="transactionKey">transaction Key:</label>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<input type="text" class="form-control" id="transactionKey"
+						placeholder="transactionKey">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">
+				<label class="control-label hidden-xs col-sm-3 col-md-3 col-lg-3"
+					for="hash">Hash value:</label>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<input type="text" class="form-control" id="hashValue"
+						placeholder="hashValue">
+				</div>
+			</div>
+			<div class="form-group" style="margin-left: 0px; margin-right: 0px;">        
+      <div class="col-md-offset-3 col-sm-offset-3 col-lg-offset-3 col-md-6 col-lg-6 col-sm-6">
+        <button type="submit" id="GenerateFingerPrint" class="btn btn-primary btn-lg btn-block" onclick="GenerateHash(event)">Generate Hash</button>
+      </div>
+    </div>
+   <div class="form-group" style="margin-right:0px;margin-left:0px;border-top: thin solid rgba(0, 0, 0, 0.07);">
+         <img src="image/powered_simple.png" style="float:right;margin-right: 15px;margin-top: 15px"/>
+    </div> 
+    </div>
 	
 	
     <div class="form-horizontal formDiv1" role="form" >
      <div class="form-group">
-      <label class="control-label col-sm-3" for="blob">Payment Nounce:</label>
+      <label class="control-label col-sm-3" for="blob">Encrypted Blob:</label>
       <div class="col-sm-8">          
         <textarea class="form-control" id="blob" rows="15"></textarea>
       </div>
     </div>
-   
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="transact">Transact Response:</label>
+      <div class="col-sm-8">          
+         <textarea class="form-control" id="transact" rows="15"></textarea>
+      </div>
+    </div>
   </div>
   <div id="fade"></div>
   <div id="modal">
@@ -187,7 +239,6 @@ body {
 <script type="text/javascript">
  
  var fingerPrint;
- 
 
  
 function setDefaultValue(event){
@@ -199,11 +250,11 @@ function setDefaultValue(event){
 	document.getElementById('cardCode').value = '3434' ;
 	document.getElementById('Zip').value = '98012' ;
 	document.getElementById('fullName').value = 'Ben Parker' ;
-	var ApiLoginID = document.getElementById('loginID').value= "new-vital-fnbo";
+	var ApiLoginID = document.getElementById('loginID').value= "mbld_api_-tH6Y3s1";
 }
 
 function setClientKeyDefaultValue(event){
-	document.getElementById('clientKey').value = '2nZ6CfUrYgQu6uXvf4PhJd4BSNZ5329X9YWHK8g3k6Qvc2VPgU6Ux3fk82x9tAxd' ;
+	document.getElementById('clientKey').value = '4Bca2jbySMxHYQNUjAB2u8e8TG37G38mbf6q84Ezvn6X3vtYqZ75YT539vUHrvKg' ;
 }
 
 
@@ -293,10 +344,8 @@ function setFingerPrintDefaultValue(event){
 	    if((document.getElementById('isClientKey').checked)){
 	    	 authData.clientKey = document.getElementById('clientKey').value;
 	    }
-	    authData.clientKey = 'Z6CfUrYgQu6uXvf4PhJd4BSNZ5329X9YWHK8g3k6Qvc2VPgU6Ux3fk82x9tAxd';
         options.authData = authData ;
-		options.clientId = "accept-js-v2";
-		var response = Accept.dispatchData(options, callbackMerchant);
+		var response = Accept.dispatchData(options, 'callbackMerchant');
 	}
 
 	  function getCurrentTimeStamp() {
