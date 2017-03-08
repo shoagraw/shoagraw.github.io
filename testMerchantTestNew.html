@@ -9,11 +9,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="jquery.md5.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
   
-<!--<script  src="https://{[sfe[vip[2]]]}/v1/Accept.js"></script>
- <script  src="../deploy/Accept.js"></script>-->
- <style>
+<script  src="https://js.authorize.net/v1/Accept.js"></script>
+<!-- <script  src="deploy/Accept.js"></script> -->
+<style>
 body {
      
 }
@@ -239,20 +238,7 @@ body {
 
 <script type="text/javascript">
  
-var fingerPrint;
-setTimeout(function(){ loadScript() }, 1000);
-
-function loadScript() {
-            var myScripts = document.createElement("script");
-            myScripts.type = "text/javascript";
-            myScripts.src = "https://js.authorize.net/v1/Accept.js?a=q";
-            (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(myScripts);
- 
-
- 	/*	require(['Accept'], function(accept){
-             Accept =   accept;
-        });*/
-}
+ var fingerPrint;
 
  
 function setDefaultValue(event){
@@ -264,11 +250,11 @@ function setDefaultValue(event){
 	document.getElementById('cardCode').value = '3434' ;
 	document.getElementById('Zip').value = '98012' ;
 	document.getElementById('fullName').value = 'Ben Parker' ;
-	var ApiLoginID = document.getElementById('loginID').value= "new-vital-fnbo";
+	var ApiLoginID = document.getElementById('loginID').value= "mbld_api_-tH6Y3s1";
 }
 
 function setClientKeyDefaultValue(event){
-	document.getElementById('clientKey').value = '2nZ6CfUrYgQu6uXvf4PhJd4BSNZ5329X9YWHK8g3k6Qvc2VPgU6Ux3fk82x9tAxd' ;
+	document.getElementById('clientKey').value = '4Bca2jbySMxHYQNUjAB2u8e8TG37G38mbf6q84Ezvn6X3vtYqZ75YT539vUHrvKg' ;
 }
 
 
@@ -277,11 +263,11 @@ function setFingerPrintDefaultValue(event){
     var timer = Math.floor(Date.now() / 1000);
 	document.getElementById('transact').value = '';
 	document.getElementById('blob').value = '';
-	document.getElementById('loginID').value = 'new-vital-fnbo';
+	document.getElementById('loginID').value = '5gzmQ45X8';
 	document.getElementById('sequence').value = Math.round(Math.random()*timer); 
 	document.getElementById('timer').value = timer;
 	document.getElementById('amount').value = Math.round(Math.random()*100);
-	document.getElementById('transactionKey').value = '123abc';
+	document.getElementById('transactionKey').value = '8w36Hh246Tr8UfLV';
 }
   function callbackMerchant(response) {
 		if (response.messages.resultCode === 'Error') {
@@ -359,9 +345,7 @@ function setFingerPrintDefaultValue(event){
 	    	 authData.clientKey = document.getElementById('clientKey').value;
 	    }
         options.authData = authData ;
-         var response = Accept.dispatchData(options, callbackMerchant);
-       
-		
+		var response = Accept.dispatchData(options, callbackMerchant);
 	}
 
 	  function getCurrentTimeStamp() {
@@ -385,7 +369,7 @@ function setFingerPrintDefaultValue(event){
 	function createTransact(data) {
 
 		
-        var xobj = null, endPoint = "https://apitest.authorize.net/xml/v1/request.api";
+        var xobj = null, endPoint = "__WCO_Domain__/xml/v1/request.api";
         if (typeof XDomainRequest != "undefined"){
               xobj = new XDomainRequest();
          }
