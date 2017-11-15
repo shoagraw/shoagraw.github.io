@@ -115,8 +115,14 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
               
           }
           if (typeof caretPosition === 'number') {
-            $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition;
-              }
+            if(updatedNumber.length === number.length+1 )
+            { 
+              $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition+1;
+            }
+            else{
+                $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition;
+            }
+          }
 
 
 
