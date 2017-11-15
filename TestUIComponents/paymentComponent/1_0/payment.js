@@ -30,7 +30,7 @@ var anetPay = angular.module('anetPayment',[]);
     paymentFormController.$inject = ['$scope'];
     return { 
         restrict: 'E', 
-        templateUrl: '../scripts/components/paymentComponent/1_0/assets/PaymentForm.html',
+        templateUrl: 'paymentComponent/1_0/assets/PaymentForm.html',
         scope:{ opt:'='
         }, 
          replace:true,
