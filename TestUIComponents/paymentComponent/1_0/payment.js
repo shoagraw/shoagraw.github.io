@@ -115,7 +115,7 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
               
           }
           if (typeof caretPosition === 'number') {
-                  element[0].selectionStart = element[0].selectionEnd = caretPosition;
+            $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition;
               }
 
 
