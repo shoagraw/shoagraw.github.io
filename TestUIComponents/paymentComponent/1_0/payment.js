@@ -105,16 +105,19 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
           var number = $scope.opt.creditCard.model;
           
           // change $scope.opt.creditCard.model = $scope.formateNumber(number);
-          var updatedNumber = $scope.formateNumber(number);
+          var updatedNumber = $scope.formateNumber(number.replace(/[^0-9*]+/g, ''));
           var caretPosition;
           if (updatedNumber !== number) {
-             caretPosition = $element[0].selectionStart ;
+             caretPosition = $element[0].childNodes[0].selectionStart ;
+             console.log(caretPosition)
               $scope.opt.creditCard.model = updatedNumber;
               $scope.$apply();
-              if (typeof caretPosition === 'number') {
+              
+          }
+          if (typeof caretPosition === 'number') {
                   element[0].selectionStart = element[0].selectionEnd = caretPosition;
               }
-          }
+
 
 
 
