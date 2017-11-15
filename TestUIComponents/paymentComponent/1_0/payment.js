@@ -6,7 +6,7 @@ var anetPay = angular.module('anetPayment',[]);
    "use strict";
     function paymentFormController($scope){
       var link=document.createElement('link');
-      link.href='../scripts/components/paymentComponent/1_0/assets/paymentForm.css';
+      link.href='paymentComponent/1_0/assets/paymentForm.css';
       link.rel='stylesheet';
       var length = document.getElementsByTagName('head')[0].getElementsByTagName('link').length-1  ;
       var lastElement = angular.element(document.getElementsByTagName('head')[0].getElementsByTagName('link')[length]);
