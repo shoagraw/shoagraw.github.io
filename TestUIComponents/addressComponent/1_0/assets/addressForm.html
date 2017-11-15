@@ -1,0 +1,109 @@
+<div> 
+    <div class="row">
+        <div class="col-xs-0 col-sm-2">
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <label class="billingAddressLabel">{{opt.label}}</label>
+        </div>
+        <div class="col-xs-0 col-sm-8">
+        </div>
+    </div> 
+  <div class="row">
+    <div class="col-xs-0  col-sm-2">
+    </div>
+    <div class="col-xs-12  col-sm-4">
+      <div  ng-class="getInputFieldClass(opt.firstName.model , hasFirstNameFocus)">
+        <div>
+          <input id="firstNameID" ng-focus="focusIn('firstNameID' ,hasFirstNameFocus=true)" ng-blur="focusOut('firstNameID',hasFirstNameFocus = false)" ng-model="opt.firstName.model" my-maxlength="50" name="firstName" type="text" autocomplete="off"  autocorrect="off" autocapitalize="off" ng-class="isFieldMandatory(opt.firstName.model , hasFirstNameFocus)"></input>
+        </div>
+        <label for="firstNameID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasFirstNameFocus)" >{{opt.firstName.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ng-show="opt.addressRequired" style=""></label>
+        <label for="firstNameID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasFirstNameFocus)">{{opt.firstName.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class" ng-show="opt.addressRequired"></label>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div  ng-class="getInputFieldClass(opt.lastName.model , hasLastNameFocus)">
+        <div>
+          <input id="lastNameID" ng-focus="focusIn('lastNameID' ,hasLastNameFocus=true)" ng-blur="focusOut('lastNameID',hasLastNameFocus = false)" ng-model="opt.lastName.model" my-maxlength="50" name="lastName" type="text" autocomplete="off"  autocorrect="off" autocapitalize="off" ng-class="isFieldMandatory(opt.lastName.model , hasLastNameFocus)"></input>
+        </div>
+        <label for="lastNameID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasLastNameFocus)">{{opt.lastName.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ng-show="opt.addressRequired"></label>
+        <label for="lastNameID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasLastNameFocus)">{{opt.lastName.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class" ng-show="opt.addressRequired" ></label>
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-2">
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-xs-0 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div>
+        <select ng-class="getCountryClass()" id="countryID" ng-focus="hasCountryFocus = true" ng-blur="hasCountryFocus = false"
+          ng-model="opt.country.model" ng-change="zipFocusOut()"
+          ng-options="country.name as country.name for country in countries">
+          <option value="" style="display: none;" disabled>{{opt.country.label}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <div ng-class="getInputFieldClass(opt.zip.model , hasZipFocus)">
+        <div>
+          <input id="zipID" name="zip" ng-focus="focusIn('zipID' ,hasZipFocus=true)" ng-blur="zipFocusOut()" ng-model="opt.zip.model" my-maxlength="20" zip-code-service num-only type="text" autocomplete="off"  autocorrect="off" autocapitalize="off" ng-class="isFieldMandatory(opt.zip.model , hasZipFocus)"></input>
+        </div>
+        <label for="zipID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasZipFocus)">{{opt.zip.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ng-show="opt.addressRequired"></label>
+        <label for="zipID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasZipFocus)">{{opt.zip.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class" ng-show="opt.addressRequired" ></label>
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-4">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-0 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div  ng-class="getInputFieldClass(opt.billingAddress.model , hasBillingAddressFocus)">
+        <div>
+          <input id="billingAddressID" ng-focus="focusIn('billingAddressID' ,hasBillingAddressFocus=true)" ng-blur="focusOut('billingAddressID',hasBillingAddressFocus = false)" ng-model="opt.billingAddress.model" my-maxlength="60" name="zip" type="text" ng-class="isFieldMandatory(opt.billingAddress.model,hasBillingAddressFocus)"></input>
+        </div>
+        <label for="billingAddressID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasBillingAddressFocus)">{{opt.billingAddress.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ng-show="opt.addressRequired"></label>
+
+        <label for="billingAddressID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasBillingAddressFocus)">{{opt.billingAddress.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class" ng-show="opt.addressRequired"></label>
+      </div>
+    </div>
+   <div class="col-xs-12 col-sm-4">
+      <div  ng-class="getInputFieldClass(opt.city.model , hasCityFocus)">
+        <div>
+          <input id="cityID" ng-focus="focusIn('cityID' ,hasCityFocus=true)" ng-blur="focusOut('cityID',hasCityFocus = false)" ng-model="opt.city.model" my-maxlength="40" name="city" type="text" ng-class="isFieldMandatory(opt.city.model , hasCityFocus)"></input>
+        </div>
+        <label for="cityID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasCityFocus)">{{opt.city.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ng-show="opt.addressRequired"></label>
+
+        <label for="cityID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasCityFocus)">{{opt.city.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class" ng-show="opt.addressRequired"></label>
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-2">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-0 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div ng-class="getInputFieldClass(opt.state.model , hasStateFocus)">
+        <div>
+          <input id="stateID" ng-focus="focusIn('stateID' ,hasStateFocus=true)" ng-blur="focusOut('stateID',hasStateFocus = false)" ng-model="opt.state.model" my-maxlength="40" name="state" type="text" ng-class="isFieldMandatory(opt.state.model , hasStateFocus)"></input>
+        </div>
+        <label for="stateID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasStateFocus)">{{opt.state.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ng-show="opt.addressRequired"></label>
+        <label for="stateID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasStateFocus)">{{opt.state.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class" ng-show="opt.addressRequired"></label>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div ng-class="getInputFieldClass(opt.phonenumber.model , hasPhonenumberFocus)">
+        <div>
+          <input id="phonenumberID" ng-focus="focusIn('phonenumberID' ,hasPhonenumberFocus=true)" ng-blur="focusOut('phonenumberID',hasPhonenumberFocus = false)" ng-model="opt.phonenumber.model" my-maxlength="25" name="phonenumber" type="tel" ng-class="getPhoneNumberClass()" phone-number-format></input>
+        </div>
+        <label for="phonenumberID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasPhonenumberFocus)">{{opt.phonenumber.label}}</label>
+        <label for="phonenumberID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasPhonenumberFocus)">{{opt.phonenumber.label}}</label>
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-2">
+    </div>
+  </div>
+</div>

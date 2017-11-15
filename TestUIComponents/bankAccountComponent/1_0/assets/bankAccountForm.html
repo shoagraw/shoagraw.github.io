@@ -1,0 +1,69 @@
+<div>  
+  <div class="row">
+    <div class="col-xs-0  col-sm-2">
+    </div>
+    <div class="col-xs-12  col-sm-4">
+        <div ng-class="getInputFieldClass(opt.bankName.model , hasBankNameFocus)">
+             <div>
+                <input id="bankNameID" ng-focus="focusIn('bankNameID' ,hasBankNameFocus=true)" ng-blur="focusOut('bankNameID',hasBankNameFocus = false)" ng-model="opt.bankName.model" my-maxlength="50" ng-class="getFieldClass()" name="firstName" type="text"></input>
+              </div>
+              <label for="bankNameID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasBankNameFocus)" >{{opt.bankName.label}}</label>
+              <label for="bankNameID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasBankNameFocus)">{{opt.bankName.label}}</span></label>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <div  ng-class="getInputFieldClass(opt.acctName.model , hasAccntNameFocus)">
+            <div>
+                <input id="acctNameID" ng-focus="focusIn('acctNameID' ,hasAccntNameFocus=true)" ng-blur="focusOut('acctNameID',hasAccntNameFocus = false)" ng-model="opt.acctName.model" my-maxlength="50" ng-class="getFieldClass()" name="AccntName" type="text"></input>
+              </div>
+              <label for="acctNameID" ng-show="isBrowserIE9() === false" ng-class="getLabelClass(hasAccntNameFocus)" >{{opt.acctName.label}}</label>
+              <label for="acctNameID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasAccntNameFocus)">{{opt.acctName.label}}</label>
+        </div>
+    </div>
+    <div class="col-xs-0 col-sm-2">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-0  col-sm-2">
+    </div>
+    <div class="col-xs-12  col-sm-4">
+        <div ng-class="getbankAccntNumberInputFieldClass()">
+              <bank-acct-number-input></bank-acct-number-input>
+              <label ng-show="isBrowserIE9() != true"  for="bankAccntNumberID" ng-class="getLabelClass(hasBankAccntNumberFocus)">{{opt.bankAcctNumber.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ></span></label>
+
+              <label for="bankAccntNumberID" ng-show="isBrowserIE9() === true" 
+              ng-class="getIE9LabelClass(hasBankAccntNumberFocus)">{{opt.bankAcctNumber.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class"></span></label>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <div ng-class="getRoutingInputFieldClass()">
+              <routing-number-input></routing-number-input>
+
+              <label ng-show="isBrowserIE9() != true"  for="routingNumberID" ng-class="getLabelClass(hasRoutingNumberFocus)">{{opt.routingNumber.label}}<span class="glyphicon glyphicon-asterisk asterisk-class"></span></label>
+
+              <label for="routingNumberID" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasRoutingNumberFocus)">{{opt.routingNumber.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class"></span></label>
+        </div>
+    </div>
+    <div class="col-xs-0 col-sm-2">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-0 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div>
+        <select ng-class="getAcctTypeClass()" id="acctTypeID" ng-focus="hasAcctTypeFocus = true" ng-blur="hasAcctTypeFocus = false"
+          ng-model="opt.acctType.model" ng-options="type.value as type.name for type in acctTypes">
+          <option value="" style="display: none;" disabled>{{opt.acctType.label}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-6">
+    </div>
+  </div>
+
+
+  
+  </div>  

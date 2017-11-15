@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-xs-0 col-sm-2 "></div>
+    <div class="col-xs-12 col-sm-8 col-md-4">
+      <span class="showInInput" Show-card-image ></span>
+      <div ng-class="getInputFieldClass()">
+        <creditcard-directive ></creditcard-directive>
+        <label for="cardNum" ng-show="isBrowserIE9() == false" ng-class="getCardLabelClass()">{{opt.creditCard.label}}<span class="glyphicon glyphicon-asterisk asterisk-class"></span></label>
+        <label for="cardNum" ng-show="isBrowserIE9() == true" ng-class="getIE9LabelClass(hasCardFocus,isValidCreditCard)">{{opt.creditCard.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class"></span></label>
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-2 visible-sm"></div>
+    <div class="clearBoth col-xs-0  col-sm-2 visible-sm"></div>
+
+    <div class="col-xs-12 col-sm-4 col-md-2">
+      <div ng-class="getExpInputFieldClass()">
+        <exp-date></exp-date>
+        <label for="month"  ng-show="isBrowserIE9() != true" ng-class="getExpDateLabelClass(hasExpiryFocus,isValidExpDate)" >{{opt.expDate.label}}<span class="glyphicon glyphicon-asterisk asterisk-class"></span></label>
+        <label for="month" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasExpiryFocus,isValidExpDate)">{{opt.expDate.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class"></span></label>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-2">
+      <div ng-class="getCVVInputFieldClass()">
+        <cvv-input></cvv-input>
+        <label ng-show="isBrowserIE9() != true"  for="cvv" ng-class="getCVVLabelClass(hasCVVFocus)">{{opt.cvv.label}}<span class="glyphicon glyphicon-asterisk asterisk-class" ng-show="opt.cvv.isRequired"></label>
+        <label for="cvv" ng-show="isBrowserIE9() === true" ng-class="getIE9LabelClass(hasCVVFocus)">{{opt.cvv.label}}<span class="glyphicon glyphicon-asterisk ie9asterisk-class" ng-show="opt.cvv.isRequired"></label>
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-2">
+    </div>
+</div>

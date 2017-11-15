@@ -1,0 +1,276 @@
+
+body{
+  font-family: Century Gothic, Regular;
+}
+
+.label-color{
+ color: #3F8FCD !important;  
+}
+
+.focuscolorEffect{
+  top: 0px !important;
+}
+
+.ie9FocusInLabelClass{
+  font-size: 10px !important;
+  top: -16px !important;
+}
+
+.ie9FocusInErrorLabelClass{
+  font-size: 10px !important;
+  color: #FF0000 !important;
+  top: -16px !important;
+}
+
+.ie9FocusOutLabelClass{
+  font-size: 10px !important;
+  color: #999999 !important;
+  top: -16px !important;
+}
+
+
+.focuscolorGreyEffect{
+  color: #666666 !important;
+  top: 0px !important;
+}
+
+.cardfocuscolorGreyEffect{
+  color: #666666 !important;
+}
+
+.cardScaleundefinedEmptyeffect{
+  left: 52px !important;
+  top: 4px !important;
+}
+
+.cardScaleEmptyFocusOut{
+  left: 52px !important;
+  top: 10px !important;
+}
+
+.cardScaleundefinedeffect{
+  left: 0px !important;
+  top: 0px !important;
+}
+
+/* line 57, ../scss/paymentForm.scss */
+.floating-placeholder {
+   position: relative;
+}
+
+.bg-border-color { border-bottom: 4px solid #3F8FCD !important }
+
+.floating-placeholder-cc {
+ position: relative;
+}
+
+.floating-placeholder-cc {
+  font-size: 16pt;
+  line-height: 2.6em ;
+  height: 2.3em;
+  margin: 0;
+  padding-top : 15px !important;
+  width: 100%;
+}
+
+
+.floating-placeholder-cc input {
+  font-size: 16pt;
+  line-height: 2.6em ;
+  height: 2.3em;
+  margin: 0;
+  padding-top : 15px !important;
+  width: 100%;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 4px;
+  color: #333333;
+  display: block;
+  background: transparent;
+  z-index: 2;
+  border-bottom: 1px solid #999999;
+  text-indent: 1.9em;
+}
+
+
+.floating-placeholder-cc label {
+  display: block;
+  position: absolute;
+  font-size: 13pt;
+  z-index: 1;
+  -webkit-transform-origin: 0 0em;
+  -moz-transform-origin: 0 0em;
+  -ms-transform-origin: 0 0em;
+  -o-transform-origin: 0 0em;
+  transform-origin: 0 0em;
+  -webkit-transition: -webkit-transform 160ms, color 200ms;
+  -moz-transition: -moz-transform 160ms, color 200ms;
+  -o-transition: -o-transform 160ms, color 200ms;
+  transition: transform 160ms, color 200ms;
+  -webkit-transform: scale(1, 1) rotateY(0);
+  -moz-transform: scale(1, 1) rotateY(0);
+  -ms-transform: scale(1, 1) rotateY(0);
+  -o-transform: scale(1, 1) rotateY(0);
+  transform: scale(1, 1) rotateY(0);
+  color: #666666;
+}
+
+.floating-placeholder-float-cc label {
+ -webkit-transform: scale(0.55, 0.55) rotateY(0);
+  -moz-transform: scale(0.55, 0.55) rotateY(0);
+  -ms-transform: scale(0.55, 0.55) rotateY(0);
+  -o-transform: scale(0.55, 0.55) rotateY(0);
+  transform: scale(0.55, 0.55) rotateY(0);
+
+}
+
+.floating-placeholder-float-cc input {
+  line-height: 1.1em !important;
+}
+
+/*This will work for firefox*/
+@-moz-document url-prefix() {
+  .floating-placeholder-float-cc input {
+   padding-top: 22px !important;
+  }
+}
+
+/* line 42, ../scss/paymentForm.scss */
+.floating-placeholder {
+  font-size: 16pt;
+  line-height: 2.6em;
+  height: 2.3em;
+  margin: 0;
+  padding-top : 15px !important;
+  width: 100%;
+}
+
+/* line 61, ../scss/paymentForm.scss */
+.floating-placeholder input {
+  font-size: 16pt;
+  line-height: 2.6em;
+  height: 2.3em;
+  margin: 0;
+  padding-top : 15px !important;
+  width: 100%;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 4px;
+  display: block;
+  background: transparent;
+  z-index: 2;
+  border-bottom: 1px solid #999999;
+  text-indent: 1.8em;
+}
+
+.text-intent {
+   text-indent: 0.1em !important; 
+}
+
+.invalidDate-text-intent {
+   text-indent: 1.7em !important; 
+}
+.validBorderBottom{
+    border-bottom: 1px solid #999999 !important;
+}
+.inValidBorderBottom{
+    border-bottom: 4px solid #FF0000 !important;
+}
+
+.errorLabelColor{
+  color: #FF0000 !important;
+  top: 0px !important;
+}
+
+/* line 76, ../scss/paymentForm.scss */
+.floating-placeholder label {
+  display: block;
+  position: absolute;
+  top: 10px;
+  font-size: 13pt;
+  z-index: 1;
+  -webkit-transform-origin: 0 0em;
+  -moz-transform-origin: 0 0em;
+  -ms-transform-origin: 0 0em;
+  -o-transform-origin: 0 0em;
+  transform-origin: 0 0em;
+  -webkit-transition: -webkit-transform 160ms, color 200ms;
+  -moz-transition: -moz-transform 160ms, color 200ms;
+  -o-transition: -o-transform 160ms, color 200ms;
+  transition: transform 160ms, color 200ms;
+  -webkit-transform: scale(1, 1) rotateY(0);
+  -moz-transform: scale(1, 1) rotateY(0);
+  -ms-transform: scale(1, 1) rotateY(0);
+  -o-transform: scale(1, 1) rotateY(0);
+  transform: scale(1, 1) rotateY(0);
+  color: #666666;
+}
+/* line 88, ../scss/paymentForm.scss */
+.floating-placeholder-float label {
+  -webkit-transform: scale(0.55, 0.55) rotateY(0);
+  -moz-transform: scale(0.55, 0.55) rotateY(0);
+  -ms-transform: scale(0.55, 0.55) rotateY(0);
+  -o-transform: scale(0.55, 0.55) rotateY(0);
+  transform: scale(0.55, 0.55) rotateY(0);
+}
+
+/* line 91, ../scss/paymentForm.scss */
+.floating-placeholder-float input {
+   line-height: 1.1em !important 
+}
+
+/*This will work for firefox*/
+@-moz-document url-prefix() {
+  .floating-placeholder-float input {
+   padding-top: 22px !important;
+  }
+  .CCImage{
+    top: 24px !important;  
+}
+}
+
+.requiredInput:after { content:"*"; font-size: 0.7em; float: right; margin-top: 9px; margin-right: 4px;;
+}
+
+.fieldRequired{
+  glyphicon glyphicon-asterisk;
+  margin-top: -51px;
+  margin-left: 131px;
+  display: block;
+}
+
+
+input[type=text]::-ms-clear, input[type=text]::-ms-reveal {
+    display: none;
+}
+
+.clearBoth{
+  clear:both;
+}
+
+.asterisk-class{
+  font-size: 10px;
+  margin-left: 6px;
+  top: -1px;
+}
+
+.ie9asterisk-class{
+  font-size: 10px;
+  margin-left: 6px;
+  top: -1px;
+}
+
+.CCImage{
+  top: 21px; 
+  position:relative; 
+  float:left; 
+  display:inline-block;
+  width: 33px; 
+  height:28px ;
+  background-size:304px !important;
+  background-repeat: no-repeat !important;
+}
+
+
