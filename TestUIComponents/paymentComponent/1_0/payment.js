@@ -102,9 +102,22 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
         } 
       };
       $scope.cardNumChange = function (){
-          var number = String($scope.opt.creditCard.model).replace(/[^0-9*]+/g, '');
-          //scope.creditCardModel = number;
-          $scope.opt.creditCard.model = $scope.formateNumber(number);
+          var number = $scope.opt.creditCard.model;
+          
+          // change $scope.opt.creditCard.model = $scope.formateNumber(number);
+          var updatedNumber = $scope.formateNumber(number);
+          var caretPosition;
+          if (updatedNumber !== number) {
+             caretPosition = $element[0].selectionStart ;
+              $scope.opt.creditCard.model = updatedNumber;
+              $scope.$apply();
+              if (typeof caretPosition === 'number') {
+                  element[0].selectionStart = element[0].selectionEnd = caretPosition;
+              }
+          }
+
+
+
           number = $scope.opt.creditCard.model.replace(/[^0-9*]+/g, '');
           if(((/^4[0-9]{6,}$/.test(number)) || (/^5[1-5][0-9]{5,}$/.test(number)) || (/^6(?:011|5[0-9]{2})[0-9]{3,}$/.test(number)) || (/^(?:2131|1800|35\d{3})\d{11}$/.test(number))) && number.length === 16){//Visa,MasterCard,Discover,JCB   
               $scope.moveFocus();
