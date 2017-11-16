@@ -114,29 +114,30 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
               $scope.$apply();
               
           }
-          if (typeof caretPosition === 'number') {
-            if(updatedNumber.length === number.length+1 )
-            { 
-              $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition+1;
+          $timeout(function(args) {
+            var $element=args[0],updatedNumber=args[1],number=args[2],caretPosition=args[3];
+            if (typeof caretPosition === 'number') {
+              if(updatedNumber.length === number.length+1 && number.length === caretPosition)
+              { 
+                $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition+1;
+              }
+              else{
+                  $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition;
+              }
             }
-            else{
-                $element[0].childNodes[0].selectionStart = $element[0].childNodes[0].selectionEnd = caretPosition;
+            number = $scope.opt.creditCard.model.replace(/[^0-9*]+/g, '');
+            if(((/^4[0-9]{6,}$/.test(number)) || (/^5[1-5][0-9]{5,}$/.test(number)) || (/^6(?:011|5[0-9]{2})[0-9]{3,}$/.test(number)) || (/^(?:2131|1800|35\d{3})\d{11}$/.test(number))) && number.length === 16){//Visa,MasterCard,Discover,JCB   
+                $scope.moveFocus();
             }
-          }
+            else if(/^3[47][0-9]{5,}$/.test(number) && number.length === 15){//amex
+                $scope.moveFocus();
+            }
+            else if(/^3(?:0[0-5]|[68][0-9])[0-9]{11}$/.test(number) && number.length === 14){// Diners Club
+                $scope.moveFocus();
+            }  
+          },10,false,[$element,updatedNumber,number,caretPosition]);
 
-
-
-
-          number = $scope.opt.creditCard.model.replace(/[^0-9*]+/g, '');
-          if(((/^4[0-9]{6,}$/.test(number)) || (/^5[1-5][0-9]{5,}$/.test(number)) || (/^6(?:011|5[0-9]{2})[0-9]{3,}$/.test(number)) || (/^(?:2131|1800|35\d{3})\d{11}$/.test(number))) && number.length === 16){//Visa,MasterCard,Discover,JCB   
-              $scope.moveFocus();
-          }
-          else if(/^3[47][0-9]{5,}$/.test(number) && number.length === 15){//amex
-              $scope.moveFocus();
-          }
-          else if(/^3(?:0[0-5]|[68][0-9])[0-9]{11}$/.test(number) && number.length === 14){// Diners Club
-              $scope.moveFocus();
-          }  
+         
       };
       $scope.moveFocus = function(){
           var check = $scope.luhnCheck();
@@ -144,7 +145,7 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
             if(check){
               $timeout(function() {
                 angular.element('#expiryDate').focus();
-              });       
+              },20);       
             }
       };
 
@@ -410,7 +411,7 @@ anetPay.directive('expDate', ['$timeout', function($timeout) {
         template: '<input type="tel" name="expiryDate" id="expiryDate" autocomplete="off"  autocorrect="off" autocapitalize="off" ng-focus = "expDateFocusIn()"  ng-blur="expDateFocusOut()" ng-model="opt.expDate.model" my-maxlength="5" ng-click="hasExpiryFocus=true"  ng-class="getExpDateClass()" ></input>',
         link: function(scope, element, attrs) {
           scope.$watch('opt.expDate.model', function(value, oldValue) {
-            if (scope.opt.expDate.model=== undefined || scope.opt.expDate.model==="") return;
+            if (scope.opt.expDate.model=== undefined || scope.opt.expDate.model==="" || scope.opt.expDate.model.length !== element[0].selectionStart) return;
             var expDateLocal =  scope.opt.expDate.model;
           
             var date_array = expDateLocal.split("/");
@@ -453,8 +454,29 @@ anetPay.directive('expDate', ['$timeout', function($timeout) {
                    } 
                 break;
             }
+            var oldExpirey = scope.opt.expDate.model;
+            var caretPosition = element[0].selectionStart;
             if(month.length===2) month = month+"/";
-             scope.opt.expDate.model = month+year;
+            {
+               scope.opt.expDate.model = month+year;
+            }
+            
+            var expDateLocal = month+year;
+            // fixing the curson position 
+             $timeout(function(args) {
+              var $element=args[0],newExp=args[1],oldExp=args[2],caretPosition=args[3];
+              if (typeof caretPosition === 'number') {
+                
+                if(newExp.length === oldExp.length+1 && oldExp.length === caretPosition)
+                { 
+                  $element[0].selectionStart = $element[0].selectionEnd = caretPosition+1;
+                }
+                else{
+                    $element[0].selectionStart = $element[0].selectionEnd = caretPosition;
+                }
+              }
+            },30,false,[element,expDateLocal,oldExpirey,caretPosition]); 
+            
           });  
     }
     };
