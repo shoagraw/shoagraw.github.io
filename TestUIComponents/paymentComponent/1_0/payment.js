@@ -111,8 +111,6 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
              caretPosition = $element[0].childNodes[0].selectionStart ;
              console.log(caretPosition)
               $scope.opt.creditCard.model = updatedNumber;
-              $scope.$apply();
-              
           }
           $timeout(function(args) {
             var $element=args[0],updatedNumber=args[1],number=args[2],caretPosition=args[3];
