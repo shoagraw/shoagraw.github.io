@@ -109,11 +109,10 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
           var caretPosition;
           if (updatedNumber !== number) {
              caretPosition = $element[0].childNodes[0].selectionStart ;
-             console.log(caretPosition)
-              $scope.opt.creditCard.model = updatedNumber;
+             $scope.opt.creditCard.model = updatedNumber;
           }
           $timeout(function(args) {
-            var $element=args[0],updatedNumber=args[1],number=args[2],caretPosition=args[3];
+            var $element=args[0],updatedNumber = args[1], number = args[2], caretPosition = args[3], $scope = args[4];
             if (typeof caretPosition === 'number') {
               if(updatedNumber.length === number.length+1 && number.length === caretPosition)
               { 
@@ -133,7 +132,7 @@ anetPay.directive('creditcardDirective', ['$timeout', function($timeout) {
             else if(/^3(?:0[0-5]|[68][0-9])[0-9]{11}$/.test(number) && number.length === 14){// Diners Club
                 $scope.moveFocus();
             }  
-          },10,false,[$element,updatedNumber,number,caretPosition]);
+          },10,false,[$element,updatedNumber,number,caretPosition,$scope]);
 
          
       };
