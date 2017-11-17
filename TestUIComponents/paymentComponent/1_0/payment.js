@@ -448,7 +448,7 @@ anetPay.directive('expDate', ['$timeout', function($timeout) {
                    scope.isValidExpDate = true; 
                    $timeout(function() {
                       angular.element('#cvv').focus();
-                    }) ;
+                    },20) ;
                    } 
                 break;
             }
@@ -473,7 +473,7 @@ anetPay.directive('expDate', ['$timeout', function($timeout) {
                     $element[0].selectionStart = $element[0].selectionEnd = caretPosition;
                 }
               }
-            },30,false,[element,expDateLocal,oldExpirey,caretPosition]); 
+            },10,false,[element,expDateLocal,oldExpirey,caretPosition]); 
             
           });  
     }
